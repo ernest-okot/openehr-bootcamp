@@ -73,15 +73,17 @@ export const CompositionEditor: React.FC<Props> = ({
   const updateComposition = useMutation({
     mutationKey: ["update-composition", compositionId],
     mutationFn(flatJson: object) {
+      const [uid] = compositionId?.split("::") || [];
       return ehrbaseClient
         .put(
-          `/ehr/${ehrId}/composition/${compositionId}?templateId=${templateId}`,
+          `/ehr/${ehrId}/composition/${uid}?templateId=${templateId}`,
           flatJson,
           {
             headers: {
               "Content-Type": "application/openehr.wt.flat.schema+json",
               Accept: "application/openehr.wt.flat.schema+json",
               Prefer: "return=representation",
+              "If-Match": compositionId,
             },
           }
         )
@@ -102,8 +104,6 @@ export const CompositionEditor: React.FC<Props> = ({
     if (!compositionId) {
       return createComposition.mutateAsync(data);
     }
-
-    console.log({ data });
 
     return updateComposition.mutateAsync(data);
   }
