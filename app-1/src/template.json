@@ -1,0 +1,1126 @@
+{
+  "templateId": "vital_signs_ernest_final.v0",
+  "semVer": "0.1.0",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": ["ar-sy", "pt-br", "nl", "sv", "de", "fi", "nb", "en"],
+  "tree": {
+    "id": "vital_signs_ernest_final.v0",
+    "name": "vital_signs_ernest_final.v0",
+    "localizedName": "vital_signs_ernest_final.v0",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "ar-sy": "vital_signs_ernest_final.v0",
+      "pt-br": "vital_signs_ernest_final.v0",
+      "nl": "vital_signs_ernest_final.v0",
+      "sv": "vital_signs_ernest_final.v0",
+      "de": "vital_signs_ernest_final.v0",
+      "fi": "vital_signs_ernest_final.v0",
+      "nb": "vital_signs_ernest_final.v0",
+      "en": "vital_signs_ernest_final.v0"
+    },
+    "localizedDescriptions": {
+      "ar-sy": "*Interaction, contact or care event between a subject of care and healthcare provider(s).(en)",
+      "pt-br": "Interação, contato ou cuidado entre o sujeito do cuidado e profissional(is) de saúde.",
+      "nl": "Interactie, contact of zorggebeurtenis tussen een onderwerp van zorg en zorgverlener(s).",
+      "sv": "Interaktion, kontakt eller vårdhändelse mellan patient och vårdgivare inom hälso- och sjukvården.",
+      "de": "Interaktion, Kontakt oder Versorgungsereignis, zwischen einem Versorgungsempfänger und einem Gesundheitsdienstleister.",
+      "fi": "Hoitohenkilön ja terveydenhuollon tarjoajan välinen vuorovaikutus, kontakti- tai hoitotapahtuma.",
+      "nb": "Interaksjon, kontakt eller omsorgshendelse mellom et individ og helsepersonell.",
+      "en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "pulse_heart_beat",
+        "name": "Pulse/Heart beat",
+        "localizedName": "Pulse/Heart beat",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.pulse.v2",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "ar-sy": "*Pulse/Heart beat(en)",
+          "pt-br": "Pulso/Batimento Cardíaco",
+          "nl": "Pols/Hartfrequentie",
+          "sv": "Puls/Hjärtfrekvens",
+          "de": "Pulsfrequenz/Herzfrequenz",
+          "fi": "Pulssi/syke",
+          "nb": "Puls/Hjertefrekvens",
+          "en": "Pulse/Heart beat"
+        },
+        "localizedDescriptions": {
+          "ar-sy": "*The rate and associated attributes for a pulse or heart beat. (en)",
+          "pt-br": "*The rate and associated attributes for a pulse or heart beat. (en)",
+          "nl": "De frequentie en bijbehorende eigenschappen van de pols- of hartfrequentie.",
+          "sv": "Hjärtslagens eller pulsens frekvens och tillhörande attribut.",
+          "de": "Die Frequenz und zugehörige Attribute für die Puls- oder Herzfrequenz.",
+          "fi": "*The rate and associated attributes for a pulse or heart beat. (en)",
+          "nb": "Måling av puls/hjertefrekvens, eller eksplisitt puls eller hjertefrekvens, og beskrivelse av tilhørende egenskaper.",
+          "en": "The rate and associated attributes for a pulse or heart beat."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]",
+        "children": [
+          {
+            "id": "rate",
+            "name": "Rate",
+            "localizedName": "Rate",
+            "rmType": "DV_QUANTITY",
+            "nodeId": "at0004",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "ar-sy": "*Rate(en)",
+              "pt-br": "Frequência",
+              "nl": "Frequentie",
+              "sv": "Frekvens",
+              "de": "Frequenz",
+              "fi": "Taajuus",
+              "nb": "Frekvens",
+              "en": "Rate"
+            },
+            "localizedDescriptions": {
+              "ar-sy": "*The rate of the pulse or heart beat, measured in beats per minute. (en)",
+              "pt-br": "*The rate of the pulse or heart beat, measured in beats per minute. (en)",
+              "nl": "De frequentie van pols- of hartslag, gemeten in slagen per minuut.",
+              "sv": "Puls eller hjärtfrekvens, mätt i slag per minut.",
+              "de": "Die Frequenz, gemessen in Schlägen pro Minute.",
+              "fi": "*The rate of the pulse or heart beat, measured in beats per minute. (en)",
+              "nb": "Puls- eller hjertefrekvens, målt i støt/slag per minutt.",
+              "en": "The rate of the pulse or heart beat, measured in beats per minute."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
+            "inputs": [
+              {
+                "suffix": "magnitude",
+                "type": "DECIMAL",
+                "validation": {
+                  "range": {
+                    "minOp": ">=",
+                    "min": 0.0,
+                    "maxOp": "<",
+                    "max": 1000.0
+                  },
+                  "precision": {
+                    "minOp": ">=",
+                    "min": 0,
+                    "maxOp": "<=",
+                    "max": 0
+                  }
+                }
+              },
+              {
+                "suffix": "unit",
+                "type": "CODED_TEXT",
+                "list": [
+                  {
+                    "value": "/min",
+                    "label": "/min",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<",
+                        "max": 1000.0
+                      },
+                      "precision": {
+                        "minOp": ">=",
+                        "min": 0,
+                        "maxOp": "<=",
+                        "max": 0
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse.v2]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "blood_pressure",
+        "name": "Blood pressure",
+        "localizedName": "Blood pressure",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.blood_pressure.v2",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "ar-sy": "ضغط الدم",
+          "pt-br": "Pressão Arterial",
+          "nl": "Bloeddruk",
+          "sv": "Blodtryck",
+          "de": "Blutdruck",
+          "fi": "Verenpaine",
+          "nb": "Blodtrykk",
+          "en": "Blood pressure"
+        },
+        "localizedDescriptions": {
+          "ar-sy": "قياس موضعي لضغط الدم الشرياني و الذي يحل محل الضغط الشرياني في الدورة الدموية الجهازية. \r\nو عادة ما يستخدم مصطلح \"ضغط الدم\" لللإشارة إلى قياس ضغط دم الشريان العضُدي في أعلى الذراع.",
+          "pt-br": "A medida local da pressão sanguínea arterial, a qual é uma substituta da pressão arterial na circulação arterial sistêmica. Mais comumente o uso do termo pressão arterial se refere à medida da pressão da artéria braquial no antebraço.",
+          "nl": "De lokale meting van de arteriële bloeddruk, welke surrogaat is voor de arteriële druk in de systemische circulatie.",
+          "sv": "Den lokala mätningen av artärblodtrycket som är ett substitut för artärtryck i den systemiska cirkulationen.",
+          "de": "Die lokale Messung des arteriellen Blutdrucks als Surrogat für den arteriellen Druck in der systemischen Zirkulation.",
+          "fi": "Paikallisen valtimopaineen mittaustulos, joka toimii korvikkeena systeemisen verenkierron valtimopaineelle.  Termillä ”verenpaine” viitataan yleensä olkavarresta tehtävään olkavarsivaltimon paineen mittaustulokseen.",
+          "nb": "Måling av blodtrykket som uttrykk for det arterielle blodtrykk i det systemiske kretsløp.",
+          "en": "The local measurement of arterial blood pressure which is a surrogate for arterial pressure in the systemic circulation."
+        },
+        "annotations": {
+          "comment": "Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]",
+        "children": [
+          {
+            "id": "systolic",
+            "name": "Systolic",
+            "localizedName": "Systolic",
+            "rmType": "DV_QUANTITY",
+            "nodeId": "at0004",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "ar-sy": "الانقباضي",
+              "pt-br": "Sistólica",
+              "nl": "Systolisch",
+              "sv": "Systoliskt",
+              "de": "Systolisch",
+              "fi": "Systolinen",
+              "nb": "Systolisk",
+              "en": "Systolic"
+            },
+            "localizedDescriptions": {
+              "ar-sy": "ذروة ضغط الدم الشرياني الجهازي - يتم قياسه في طور الانقباض من دورة القلب",
+              "pt-br": "Pressão arterial sistêmica máxima - medida na fase sistólica ou de contração do ciclo cardíaco.",
+              "nl": "De hoogste (piek) systemische arteriële bloeddruk - gemeten in de systolische of samentrekkingsfase van de hartslag.",
+              "sv": "Det högsta systemiskt arteriella blodtrycket uppmätt systoliskt eller under sammandragningsfasen av hjärtcykeln.",
+              "de": "Der höchste arterielle Blutdruck eines Zyklus - gemessen in der systolischen oder Kontraktionsphase des Herzens.",
+              "fi": "Systeemisen verenkierron valtimoverenpaineen huippuarvo – mitataan sydämenlyönnin systolisessa, eli supistumisvaiheessa.",
+              "nb": "Maksimalt systemisk arterielt blodtrykk - målt i systolen, det vil si i hjertets kontraksjonsfase.",
+              "en": "Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value",
+            "inputs": [
+              {
+                "suffix": "magnitude",
+                "type": "DECIMAL",
+                "validation": {
+                  "range": {
+                    "minOp": ">=",
+                    "min": 0.0,
+                    "maxOp": "<",
+                    "max": 1000.0
+                  },
+                  "precision": {
+                    "minOp": ">=",
+                    "min": 0,
+                    "maxOp": "<=",
+                    "max": 0
+                  }
+                }
+              },
+              {
+                "suffix": "unit",
+                "type": "CODED_TEXT",
+                "list": [
+                  {
+                    "value": "mm[Hg]",
+                    "label": "mm[Hg]",
+                    "localizedLabels": {
+                      "ar-sy": "mmHg",
+                      "pt-br": "mmHg",
+                      "nl": "mmHg",
+                      "sv": "mmHg",
+                      "de": "mmHg",
+                      "fi": "mmHg",
+                      "nb": "mmHg",
+                      "en": "mmHg"
+                    },
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<",
+                        "max": 1000.0
+                      },
+                      "precision": {
+                        "minOp": ">=",
+                        "min": 0,
+                        "maxOp": "<=",
+                        "max": 0
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "termBindings": {
+              "SNOMED-CT": {
+                "value": "[SNOMED-CT(2003)::271649006]",
+                "terminologyId": "SNOMED-CT"
+              }
+            }
+          },
+          {
+            "id": "diastolic",
+            "name": "Diastolic",
+            "localizedName": "Diastolic",
+            "rmType": "DV_QUANTITY",
+            "nodeId": "at0005",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "ar-sy": "الانبساطي",
+              "pt-br": "Diastólica",
+              "nl": "Diastolisch",
+              "sv": "Diastoliskt",
+              "de": "Diastolisch",
+              "fi": "Diastolinen",
+              "nb": "Diastolisk",
+              "en": "Diastolic"
+            },
+            "localizedDescriptions": {
+              "ar-sy": "الحد الأدني لضغط الدم الشرياني الجهازي - يتم قياسها في طور الانبساط - الارتخاء من دورة القلب",
+              "pt-br": "Pressão arterial sistêmica mínima - medida na fase diastólica ou de dilatação do ciclo cardíaco.",
+              "nl": "De laagste systemische arteriële bloeddruk - gemeten in de diastolische of ontspanningsfase van de hartslag.",
+              "sv": "Det minsta systemiskt arteriella blodtrycket uppmätt diastoliskt eller i hjärtcykelns avslappningsfas.",
+              "de": "Der minimale systemische arterielle Blutdruck eines Zyklus - gemessen in der diastolischen oder Entspannungsphase des Herzens.",
+              "fi": "Systeemisen verenkierron valtimoverenpaineen pienin arvo – mitataan sydämenlyönnin diastolisessa, eli veltostumisvaiheessa.",
+              "nb": "Laveste systemiske arterielle blodtrykk - målt i diastolen, det vil si under hjertets relaksasjonsfase.",
+              "en": "Minimum systemic arterial blood pressure - measured in the diastolic or relaxation phase of the heart cycle."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value",
+            "inputs": [
+              {
+                "suffix": "magnitude",
+                "type": "DECIMAL",
+                "validation": {
+                  "range": {
+                    "minOp": ">=",
+                    "min": 0.0,
+                    "maxOp": "<",
+                    "max": 1000.0
+                  },
+                  "precision": {
+                    "minOp": ">=",
+                    "min": 0,
+                    "maxOp": "<=",
+                    "max": 0
+                  }
+                }
+              },
+              {
+                "suffix": "unit",
+                "type": "CODED_TEXT",
+                "list": [
+                  {
+                    "value": "mm[Hg]",
+                    "label": "mm[Hg]",
+                    "localizedLabels": {
+                      "ar-sy": "mmHg",
+                      "pt-br": "mmHg",
+                      "nl": "mmHg",
+                      "sv": "mmHg",
+                      "de": "mmHg",
+                      "fi": "mmHg",
+                      "nb": "mmHg",
+                      "en": "mmHg"
+                    },
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<",
+                        "max": 1000.0
+                      },
+                      "precision": {
+                        "minOp": ">=",
+                        "min": 0,
+                        "maxOp": "<=",
+                        "max": 0
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "termBindings": {
+              "SNOMED-CT": {
+                "value": "[SNOMED-CT(2003)::271650006]",
+                "terminologyId": "SNOMED-CT"
+              }
+            }
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/data[at0001]/events[at0006]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v2]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ],
+        "termBindings": {
+          "SNOMED-CT": {
+            "value": "[SNOMED-CT(2003)::364090009]",
+            "terminologyId": "SNOMED-CT"
+          }
+        }
+      },
+      {
+        "id": "pulse_oximetry",
+        "name": "Pulse oximetry",
+        "localizedName": "Pulse oximetry",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.pulse_oximetry.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "ar-sy": "*Pulse oximetry(en)",
+          "pt-br": "Oximetria de pulso",
+          "nl": "Pulsoximetrie",
+          "sv": "Pulsoximetri",
+          "de": "Pulsoxymetrie",
+          "fi": "Pulssioksimetria",
+          "nb": "Pulsoksymetri",
+          "en": "Pulse oximetry"
+        },
+        "localizedDescriptions": {
+          "ar-sy": "*Blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.(en)",
+          "pt-br": "Medidas de oxigênio sanguíneo obtidas por medida de oximetria de pulso carbo-oximetria de pulso.",
+          "nl": "Zuurstof saturatie in het bloed en gerelateerde metingen, gemeten met behulp van pulsoximetrie of pulsCOoximetrie.",
+          "sv": "Syremättnad i blodet och relaterade mätningar, uppmätta med pulsoximetri eller CO-oximetri.",
+          "de": "Blutsauerstoff und verwandte Messungen, die mittels Pulsoxymetrie oder Puls-CO-Oximetrie gemessen wurden.",
+          "fi": "Veren happisaturaatio ja siihen liittyvät mittaukset, joiden mittausmenetelmä on pulssioksimetria tai CO-pulssioksimetria.",
+          "nb": "Blodoksygen og beslektede målinger, målt ved pulsoksymetri eller puls-CO-oksymetri.",
+          "en": "Blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]",
+        "children": [
+          {
+            "id": "spo",
+            "name": "SpO₂",
+            "localizedName": "SpO₂",
+            "rmType": "DV_PROPORTION",
+            "nodeId": "at0006",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "ar-sy": "*SpO₂(en)",
+              "pt-br": "SpO₂",
+              "nl": "SpO₂",
+              "sv": "SpO₂",
+              "de": "SpO₂",
+              "fi": "SpO₂",
+              "nb": "SpO₂",
+              "en": "SpO₂"
+            },
+            "localizedDescriptions": {
+              "ar-sy": "*The saturation of oxygen in the peripheral blood, measured via pulse oximetry.(en)",
+              "pt-br": "A saturação de oxigênio no sangue periférico obtida por oximetria de pulso.",
+              "nl": "De zuurstofsaturatie in het perifere bloed gemeten met pulsoximetrie.",
+              "sv": "Syremättnad i perifert blod uppmätt genom pulsoximetri.",
+              "de": "Die Sättigung des Sauerstoffs im peripheren Blut, mittels Pulsoxymetrie gemessen.",
+              "fi": "Pulssioksimetrilla mitattu ääreisverenkierron happisaturaatio.",
+              "nb": "Oksygenmetning i perifert blod, målt via pulsoksymetri.",
+              "en": "The saturation of oxygen in the peripheral blood, measured via pulse oximetry."
+            },
+            "annotations": {
+              "comment": "SpO₂ is defined as the percentage of oxyhaemoglobin (HbO₂) to the total concentration of haemoglobin (HbO₂ + deoxyhaemoglobin) in peripheral blood."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value",
+            "proportionTypes": ["percent"],
+            "inputs": [
+              {
+                "suffix": "numerator",
+                "type": "DECIMAL",
+                "validation": {
+                  "range": {
+                    "minOp": ">=",
+                    "min": 0.0,
+                    "maxOp": "<=",
+                    "max": 100.0
+                  }
+                }
+              },
+              {
+                "suffix": "denominator",
+                "type": "DECIMAL",
+                "validation": {
+                  "range": {
+                    "minOp": ">=",
+                    "min": 100.0,
+                    "maxOp": "<=",
+                    "max": 100.0
+                  }
+                }
+              }
+            ],
+            "termBindings": {
+              "SNOMED-CT": {
+                "value": "[SNOMED-CT::431314004]",
+                "terminologyId": "SNOMED-CT"
+              },
+              "LOINC": {
+                "value": "[LOINC::59408-5]",
+                "terminologyId": "LOINC"
+              }
+            }
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]/data[at0001]/events[at0002]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "height_length",
+        "name": "Height/Length",
+        "localizedName": "Height/Length",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.height.v2",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "ar-sy": "الارتفاع / الطول",
+          "pt-br": "Altura / comprimento",
+          "nl": "Hoogte/Lengte",
+          "sv": "Kroppslängd",
+          "de": "Größe/Länge",
+          "fi": "Pituus",
+          "nb": "Høyde/Lengde",
+          "en": "Height/Length"
+        },
+        "localizedDescriptions": {
+          "ar-sy": "الارتفاع أو طول الجسم, يتم قياسه من تاج الرأس إلى أخمص القدم. يتم قياس الارتفاع عندما يكون الفرد واقفا, و طول الجسم عندما يكون الفرد مستلقيا.",
+          "pt-br": "Altura ou comprimento do corpo, é medida a partir da coroa da cabeça a sola do pé.\r\nA altura é medida com o indivíduo na posição de pé e comprimento do corpo na posição decúbito dorsal.",
+          "nl": "De lichaamslengte wordt gemeten vanaf de kruin van het hoofd tot en met de voetzool. In het engelse taaldomein wordt er verschil gemaakt tussen hoogte (height) en lengte (length), waarbij hoogte staande gemeten wordt en lengte liggend.",
+          "sv": "Kroppslängd mäts från hjässa till fotsula.",
+          "de": "Größe bzw. Körperlänge wird vom Scheitel bis zur Fußsohle gemessen.",
+          "fi": "Kehon pituus mitataan päälaesta jalkapohjaan.",
+          "nb": "Individets høyde eller lengde målt fra isse til fotsåle.",
+          "en": "Height, or body length, is measured from crown of head to sole of foot."
+        },
+        "annotations": {
+          "comment": "Height is measured with the individual in a standing position and body length in a recumbent position."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]",
+        "children": [
+          {
+            "id": "height_length",
+            "name": "Height/Length",
+            "localizedName": "Height/Length",
+            "rmType": "DV_QUANTITY",
+            "nodeId": "at0004",
+            "min": 1,
+            "max": 1,
+            "localizedNames": {
+              "ar-sy": "الارتفاع / الطول",
+              "pt-br": "Altura / comprimento",
+              "nl": "Hoogte/Lengte",
+              "sv": "Kroppslängd",
+              "de": "Größe/Länge",
+              "fi": "Pituus",
+              "nb": "Høyde/lengde",
+              "en": "Height/Length"
+            },
+            "localizedDescriptions": {
+              "ar-sy": "طول الجسم من تاج الرأس إلى أخمص القدم.",
+              "pt-br": "O comprimento do corpo da coroa da cabeça a sola do pé.",
+              "nl": "De lengte van het lichaam vanaf de kruin van het hoofd tot en met de voetzool.",
+              "sv": "Kroppslängd från hjässa till fotsula.",
+              "de": "Die Länge des Körpers vom Scheitel bis zur Fußsohle.",
+              "fi": "Kehon pituus päälaesta jalkapohjaan.",
+              "nb": "Høyde/lengde fra isse til fotsåle.",
+              "en": "The length of the body from crown of head to sole of foot."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+            "inputs": [
+              {
+                "suffix": "magnitude",
+                "type": "DECIMAL"
+              },
+              {
+                "suffix": "unit",
+                "type": "CODED_TEXT",
+                "list": [
+                  {
+                    "value": "cm",
+                    "label": "cm",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 1000.0
+                      }
+                    }
+                  },
+                  {
+                    "value": "[in_i]",
+                    "label": "[in_i]",
+                    "localizedLabels": {
+                      "ar-sy": "in",
+                      "pt-br": "in",
+                      "nl": "in",
+                      "sv": "in",
+                      "de": "in",
+                      "fi": "in",
+                      "nb": "in",
+                      "en": "in"
+                    },
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 250.0
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "termBindings": {
+              "LOINC": {
+                "value": "[LOINC::8302-2]",
+                "terminologyId": "LOINC"
+              }
+            }
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "body_weight",
+        "name": "Body weight",
+        "localizedName": "Body weight",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.body_weight.v2",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "ar-sy": "وزن الجسم",
+          "pt-br": "Peso corporal",
+          "nl": "Lichaamsgewicht",
+          "sv": "Kroppsvikt",
+          "de": "Körpergewicht",
+          "fi": "Paino",
+          "nb": "Kroppsvekt",
+          "en": "Body weight"
+        },
+        "localizedDescriptions": {
+          "ar-sy": "قياس وزن الجسم للشخص",
+          "pt-br": "A medição do peso corporal de um indivíduo.",
+          "nl": "Meting van het lichaamsgewicht van een individu.",
+          "sv": "Mätning av en individs kroppsvikt.",
+          "de": "Messung des Körpergewichts eines Individuums.",
+          "fi": "Henkilön painon mittaaminen. ",
+          "nb": "Individets kroppsvekt.",
+          "en": "Measurement of the body weight of an individual."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]",
+        "children": [
+          {
+            "id": "weight",
+            "name": "Weight",
+            "localizedName": "Weight",
+            "rmType": "DV_QUANTITY",
+            "nodeId": "at0004",
+            "min": 1,
+            "max": 1,
+            "localizedNames": {
+              "ar-sy": "الوزن",
+              "pt-br": "Peso",
+              "nl": "Gewicht",
+              "sv": "Vikt",
+              "de": "Gewicht",
+              "fi": "Paino",
+              "nb": "Kroppsvekt",
+              "en": "Weight"
+            },
+            "localizedDescriptions": {
+              "ar-sy": "وزن الشخص",
+              "pt-br": "O peso do indivíduo.",
+              "nl": "Het gewicht van het individu.",
+              "sv": "Individens vikt.",
+              "de": "Das Gewicht eines Individuums.",
+              "fi": "Henkilön paino",
+              "nb": "Et individs totale kroppsmasse.",
+              "en": "The weight of the individual."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
+            "inputs": [
+              {
+                "suffix": "magnitude",
+                "type": "DECIMAL"
+              },
+              {
+                "suffix": "unit",
+                "type": "CODED_TEXT",
+                "list": [
+                  {
+                    "value": "kg",
+                    "label": "kg",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 1000.0
+                      }
+                    }
+                  },
+                  {
+                    "value": "[lb_av]",
+                    "label": "[lb_av]",
+                    "localizedLabels": {
+                      "ar-sy": "lbm",
+                      "pt-br": "lbm",
+                      "nl": "lbm",
+                      "sv": "lbm",
+                      "de": "lbm",
+                      "fi": "lbm",
+                      "nb": "lbm",
+                      "en": "lbm"
+                    },
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 2000.0
+                      }
+                    }
+                  },
+                  {
+                    "value": "g",
+                    "label": "g",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 1000000.0
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "termBindings": {
+              "LOINC": {
+                "value": "[LOINC::29463-7]",
+                "terminologyId": "LOINC"
+              }
+            }
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "ar-sy": "",
+                  "pt-br": "",
+                  "nl": "",
+                  "sv": "",
+                  "de": "",
+                  "fi": "",
+                  "nb": "",
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

@@ -14,6 +14,7 @@ services:
       - ehrbase_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
   ehrbase:
     image: ehrbase/ehrbase:2.11.0
     environment:
@@ -22,8 +23,10 @@ services:
       DB_PASS_ADMIN: ehrbase
       DB_USER: ehrbase_restricted
       DB_PASS: ehrbase_restricted
-      EHRBASE_AQL_EXPERIMENTAL_AQLONFOLDER_ENABLED: 'true'
+      EHRBASE_AQL_EXPERIMENTAL_AQLONFOLDER_ENABLED: "true"
+      WEB_CORS_ALLOWEDMETHODS: GET,PUT,DELETE,POST,OPTIONS
     ports:
       - "8080:8080"
+
 volumes:
   ehrbase_data:
