@@ -17,6 +17,13 @@ import { Add } from "@mui/icons-material";
 import { Fragment } from "react/jsx-runtime";
 import moment from "moment";
 
+const ehrQuery = `
+SELECT 
+  e/ehr_id/value, 
+  e/time_created/value 
+FROM EHR e
+`;
+
 export const Home = () => {
   const patients = useQuery({
     queryKey: ["ehrs"],
@@ -24,7 +31,7 @@ export const Home = () => {
       return ehrbaseClient.post<QueryResult>(
         "/query/aql",
         {
-          q: "SELECT e/ehr_id/value, e/time_created/value FROM EHR e",
+          q: ehrQuery,
         },
         {
           headers: {
@@ -67,24 +74,26 @@ export const Home = () => {
       </Stack>
 
       <List>
-        {patients.data?.data.rows.map(([id, createdAt]) => (
-          <Fragment key={id}>
-            <ListItem
-              component={Link}
-              to={`/patient/${id}`}
-              alignItems="center"
-            >
-              <ListItemAvatar>
-                <Avatar alt={id} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={id}
-                secondary={moment(createdAt).fromNow()}
-              />
-            </ListItem>
-            <Divider component={"li"} />
-          </Fragment>
-        ))}
+        {patients.data?.data.rows
+          .sort(([, a], [, b]) => new Date(b).getTime() - new Date(a).getTime())
+          .map(([id, createdAt]) => (
+            <Fragment key={id}>
+              <ListItem
+                component={Link}
+                to={`/patient/${id}`}
+                alignItems="center"
+              >
+                <ListItemAvatar>
+                  <Avatar alt={id} />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={id}
+                  secondary={moment(createdAt).fromNow()}
+                />
+              </ListItem>
+              <Divider component={"li"} />
+            </Fragment>
+          ))}
       </List>
     </Container>
   );
