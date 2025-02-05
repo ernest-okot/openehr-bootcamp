@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { ehrbaseClient } from "./client";
 import { Add, Close, Delete, Edit } from "@mui/icons-material";
 import template from "./template.json";
@@ -33,20 +33,20 @@ export const CompositionEditor: React.FC<Props> = ({
 }) => {
   const form = useRef<MedblocksAutoForm | null>(null);
 
-  // const webTemplate = useQuery({
-  //   queryKey: ["web-template"],
-  //   queryFn() {
-  //     return ehrbaseClient
-  //       .get(`/definition/template/adl1.4/${templateId}`, {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Accept: "application/openehr.wt+json",
-  //           Prefer: "return=representation",
-  //         },
-  //       })
-  //       .then((response) => response.data);
-  //   },
-  // });
+  const webTemplate = useQuery({
+    queryKey: ["web-template"],
+    queryFn() {
+      return ehrbaseClient
+        .get(`/definition/template/adl1.4/${templateId}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/openehr.wt+json",
+            Prefer: "return=representation",
+          },
+        })
+        .then((response) => response.data);
+    },
+  });
 
   const createComposition = useMutation({
     mutationKey: ["create-compositions"],
@@ -123,6 +123,10 @@ export const CompositionEditor: React.FC<Props> = ({
     }
   }, []);
 
+  if (!webTemplate.data) {
+    return <div />;
+  }
+
   return (
     <Dialog open={open} fullWidth maxWidth="md">
       <DialogTitle>
@@ -134,7 +138,7 @@ export const CompositionEditor: React.FC<Props> = ({
         </Stack>
       </DialogTitle>
 
-      <AutoForm ref={form} webTemplate={template as any} />
+      <AutoForm ref={form} webTemplate={webTemplate.data} />
 
       <DialogActions>
         <Button variant="contained" onClick={handleSubmit}>
